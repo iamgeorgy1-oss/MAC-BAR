@@ -422,51 +422,42 @@
     </div>
 
 
-    <div id="menu-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,320px));gap:18px;justify-content:center;">
+    <div id="menu-grid" style="display:flex;flex-direction:column;gap:16px;max-width:800px;margin:0 auto;">
 
       <!-- BITES -->
-      <div class="menu-item menu-card" data-cat="bites">
-        <div style="height:175px;background:linear-gradient(135deg,#5A3E2B,#3D2A1B);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">☕</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Do 10:00</div>
+      <div class="menu-item" style="background:rgba(15,15,15,0.85);border:1px solid rgba(90,62,43,0.28);border-radius:12px;display:flex;align-items:center;gap:24px;padding:22px 28px;position:relative;overflow:hidden;">
+        <div style="font-size:48px;line-height:1;flex-shrink:0;">☕</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:4px;">Jutranja kava</div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);margin:0;">Sveže pripravljena kava po vaši izbiri. Akcija velja vsak dan do 10:00.</p>
         </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Jutranja kava</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">2,5€</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Sveže pripravljena kava po vaši izbiri. Akcija velja vsak dan do 10:00.</p>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
+          <span class="d-font" style="font-size:26px;color:#39FF14;">2,5€</span>
+          <span style="background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Do 10:00</span>
         </div>
       </div>
 
-      <div class="menu-item menu-card" data-cat="bites">
-        <div style="height:175px;background:linear-gradient(135deg,#4A3222,#2E1E10);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">🥐</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Zajtrk</div>
+      <div class="menu-item" style="background:rgba(15,15,15,0.85);border:1px solid rgba(90,62,43,0.28);border-radius:12px;display:flex;align-items:center;gap:24px;padding:22px 28px;position:relative;overflow:hidden;">
+        <div style="font-size:48px;line-height:1;flex-shrink:0;">🥐</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:4px;">Kava + rogljiček</div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);margin:0;">Popolna jutranja kombinacija — sveža kava in hrustljav masleni rogljiček. Idealen začetek dneva.</p>
         </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Kava + rogljiček</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">2,5€</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Popolna jutranja kombinacija — sveža kava in hrustljav masleni rogljiček. Idealen začetek dneva.</p>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
+          <span class="d-font" style="font-size:26px;color:#39FF14;">2,5€</span>
+          <span style="background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Zajtrk</span>
         </div>
       </div>
 
-      <div class="menu-item menu-card" data-cat="bites">
-        <div style="height:175px;background:linear-gradient(135deg,#3D2A1B,#271810);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">🍕</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Bestseller</div>
+      <div class="menu-item" style="background:rgba(15,15,15,0.85);border:1px solid rgba(90,62,43,0.28);border-radius:12px;display:flex;align-items:center;gap:24px;padding:22px 28px;position:relative;overflow:hidden;">
+        <div style="font-size:48px;line-height:1;flex-shrink:0;">🍕</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:4px;">Pivo + pizza</div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);margin:0;">Ena velika pica po izbiri in hladno točeno pivo — popolna kombinacija za vsak prenos.</p>
         </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Pivo + pizza</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">11€</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Ena velika pica po izbiri in hladno točeno pivo — popolna kombinacija za vsak prenos.</p>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
+          <span class="d-font" style="font-size:26px;color:#39FF14;">11€</span>
+          <span style="background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Bestseller</span>
         </div>
       </div>
 
