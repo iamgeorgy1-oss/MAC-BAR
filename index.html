@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAC Športni Bar — Where Champions Gather</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brown: '#5A3E2B',
+            'neon': '#39FF14',
+            charcoal: '#111111',
+            beige: '#D6C3A5',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #111111;
+      color: #D6C3A5;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Typography ── */
+    .d-font { font-family: 'Bebas Neue', sans-serif; letter-spacing: -0.02em; line-height: 0.95; }
+
+    /* ── Grain overlay ── */
+    .grain { position: relative; }
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+      background-size: 300px;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.55;
+      mix-blend-mode: overlay;
+    }
+
+    /* ── Neon text ── */
+    .neon-text {
+      color: #39FF14;
+      text-shadow: 0 0 24px rgba(57,255,20,0.45), 0 0 48px rgba(57,255,20,0.18);
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: inline-block;
+      background: #39FF14;
+      color: #111111;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      box-shadow: 0 4px 18px rgba(57,255,20,0.28), 0 1px 4px rgba(57,255,20,0.18);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 32px rgba(57,255,20,0.38), 0 8px 28px rgba(57,255,20,0.22);
+    }
+    .btn-primary:active { transform: translateY(0) scale(0.97); }
+    .btn-primary:focus-visible { outline: 2px solid #39FF14; outline-offset: 3px; }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: #D6C3A5;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 4px;
+      border: 1px solid rgba(214,195,165,0.28);
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), border-color 0.2s ease, color 0.2s ease;
+    }
+    .btn-outline:hover { transform: translateY(-2px); border-color: rgba(214,195,165,0.65); color: #fff; }
+    .btn-outline:active { transform: translateY(0); }
+    .btn-outline:focus-visible { outline: 2px solid #D6C3A5; outline-offset: 3px; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      background: rgba(17,17,17,0.82);
+      border-bottom: 1px solid rgba(90,62,43,0.28);
+      transition: background 0.3s ease;
+    }
+    .nav-link {
+      color: rgba(214,195,165,0.65);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: #39FF14;
+      transition: width 0.28s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .nav-link:hover { color: #D6C3A5; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:focus-visible { outline: 2px solid #39FF14; outline-offset: 4px; border-radius: 2px; }
+
+    /* ── Cards ── */
+    .card {
+      background: linear-gradient(140deg, rgba(90,62,43,0.13) 0%, rgba(17,17,17,0.92) 100%);
+      border: 1px solid rgba(90,62,43,0.22);
+      border-radius: 8px;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.42), 0 1px 4px rgba(0,0,0,0.28);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(57,255,20,0.18);
+      box-shadow: 0 14px 44px rgba(0,0,0,0.52), 0 0 24px rgba(57,255,20,0.07), 0 4px 8px rgba(0,0,0,0.28);
+    }
+    .card-interactive { cursor: pointer; }
+
+    /* ── Menu items ── */
+    .menu-item {
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(90,62,43,0.18) 0%, rgba(17,17,17,0.95) 100%);
+      border: 1px solid rgba(90,62,43,0.2);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+    }
+    .menu-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.52), 0 0 22px rgba(57,255,20,0.06);
+    }
+
+    /* ── Live pulse ── */
+    .live-pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #39FF14;
+    }
+    .live-pulse::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #39FF14;
+      box-shadow: 0 0 10px rgba(57,255,20,0.9);
+      animation: live-anim 1.6s ease-in-out infinite;
+    }
+    @keyframes live-anim {
+      0%, 100% { opacity: 1; box-shadow: 0 0 10px rgba(57,255,20,0.9); }
+      50%       { opacity: 0.55; box-shadow: 0 0 18px rgba(57,255,20,0.35); }
+    }
+
+    /* ── Form ── */
+    .form-input {
+      width: 100%;
+      background: rgba(90,62,43,0.1);
+      border: 1px solid rgba(90,62,43,0.32);
+      border-radius: 4px;
+      color: #D6C3A5;
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-input::placeholder { color: rgba(214,195,165,0.35); }
+    .form-input:hover { border-color: rgba(90,62,43,0.56); }
+    .form-input:focus {
+      border-color: #39FF14;
+      background: rgba(57,255,20,0.04);
+      box-shadow: 0 0 0 3px rgba(57,255,20,0.1);
+    }
+    select.form-input { cursor: pointer; }
+    select.form-input option { background: #1a1a1a; }
+
+    /* ── Events shimmer ── */
+    @keyframes ev-shimmer {
+      0%, 100% { opacity: 0.35; }
+      50%       { opacity: 0.7; }
+    }
+
+    /* ── Section divider ── */
+    .sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(90,62,43,0.48), rgba(57,255,20,0.25), rgba(90,62,43,0.48), transparent);
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #39FF14;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.34,1.2,0.64,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero-logo-ring { display: none !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none !important; }
+      .footer-grid { grid-template-columns: 1fr !important; }
+      .hero-stats { gap: 28px !important; }
+      .reserve-grid { grid-template-columns: 1fr !important; }
+      .reserve-grid-3 { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════ NAV ════════════════════════════ -->
+<nav id="main-nav">
+  <div style="max-width:1280px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:72px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="#home" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <img src="brand_assets/Transparent_logo_outer_big_1.png" alt="MAC Športni Bar" style="height:72px;width:auto;filter:drop-shadow(0 0 8px rgba(57,255,20,0.25));" />
+      </a>
+      <a href="https://www.instagram.com/mac.sportnibar/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;border:1px solid rgba(90,62,43,0.32);color:rgba(214,195,165,0.55);text-decoration:none;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='rgba(57,255,20,0.38)';this.style.color='#39FF14';" onmouseout="this.style.borderColor='rgba(90,62,43,0.32)';this.style.color='rgba(214,195,165,0.55)';">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+    </div>
+    <div class="nav-links" style="display:flex;gap:36px;align-items:center;">
+      <a href="#events"   class="nav-link">Dogodki</a>
+      <a href="#menu"     class="nav-link">Meni</a>
+      <a href="#lokacija" class="nav-link">Lokacija</a>
+      <a href="#about"    class="nav-link">O nas</a>
+    </div>
+    <a href="#reserve" class="btn-primary">Rezerviraj mizo</a>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════ HERO ════════════════════════════ -->
+<section class="grain" id="home" style="min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:#111111;">
+
+  <!-- Layered radial gradients -->
+  <div style="position:absolute;inset:0;background:
+    radial-gradient(ellipse at 50% 55%, rgba(90,62,43,0.28) 0%, transparent 60%),
+    radial-gradient(ellipse at 18% 25%, rgba(57,255,20,0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 82% 75%, rgba(57,255,20,0.05) 0%, transparent 36%),
+    radial-gradient(ellipse at 50% 100%, rgba(90,62,43,0.18) 0%, transparent 50%);"></div>
+
+  <!-- Subtle grid lines -->
+  <div style="position:absolute;inset:0;
+    background-image:linear-gradient(rgba(90,62,43,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(90,62,43,0.055) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse at 50% 50%,black 20%,transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse at 50% 50%,black 20%,transparent 75%);"></div>
+
+  <!-- Content -->
+  <div style="position:relative;z-index:4;width:100%;padding:120px 28px 80px;display:flex;justify-content:center;">
+    <div style="max-width:760px;text-align:center;">
+
+
+      <!-- Headline -->
+      <h1 class="d-font" style="font-size:clamp(70px,11vw,148px);color:#fff;margin-bottom:4px;">WHERE</h1>
+      <h1 class="d-font neon-text" style="font-size:clamp(70px,11vw,148px);margin-bottom:4px;">CHAMPIONS</h1>
+      <h1 class="d-font" style="font-size:clamp(70px,11vw,148px);color:#D6C3A5;margin-bottom:32px;">GATHER</h1>
+
+      <!-- Sub copy -->
+      <p style="font-size:1.05rem;color:rgba(214,195,165,0.72);max-width:480px;margin:0 auto 40px;line-height:1.75;">
+        Živi prenosi na HD ekranih in zunanjem projektorju. Izbrana pijača. Odlična hrana.<br>
+        MAC Športni Bar — tvoj dom za vsako veliko tekmo, vsak večer.
+      </p>
+
+      <!-- CTAs -->
+      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+        <a href="#reserve" class="btn-primary">Rezerviraj mizo</a>
+        <a href="#menu"    class="btn-outline">Oglej si meni</a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats" style="display:flex;gap:44px;margin-top:60px;padding-top:36px;border-top:1px solid rgba(90,62,43,0.3);flex-wrap:wrap;justify-content:center;">
+        <div>
+          <div class="d-font" style="font-size:28px;color:#39FF14;line-height:1;">ZUNANJI</div>
+          <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(214,195,165,0.52);">HD Projektor</div>
+        </div>
+        <div>
+          <div class="d-font" style="font-size:22px;color:#39FF14;line-height:1.1;">TAP &amp;<br>BOTTLE</div>
+          <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(214,195,165,0.52);">Pivo</div>
+        </div>
+        <div>
+          <div class="d-font" style="font-size:42px;color:#39FF14;">7</div>
+          <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(214,195,165,0.52);">Dni na teden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:8px;">
+    <div style="font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,195,165,0.36);">Pomakni se</div>
+    <div style="width:1px;height:38px;background:linear-gradient(to bottom,rgba(57,255,20,0.45),transparent);"></div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════ PILLARS ════════════════════════ -->
+<section id="about" style="padding:100px 28px;max-width:1280px;margin:0 auto;">
+  <div class="reveal" style="text-align:center;margin-bottom:60px;">
+    <span class="section-label" style="margin-bottom:14px;display:block;">Izkušnja MAC</span>
+    <h2 class="d-font" style="font-size:clamp(38px,5vw,68px);color:#fff;">več kot bar</h2>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;">
+
+    <div class="card reveal" style="padding:38px 30px;">
+      <div style="width:54px;height:54px;border-radius:10px;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.18);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:22px;">📺</div>
+      <h3 class="d-font" style="font-size:30px;color:#fff;margin-bottom:10px;">ŽIVI PRENOSI</h3>
+      <p style="font-size:0.9rem;color:rgba(214,195,165,0.65);">HD ekrani in zunanji projektor pokrivajo vse velike lige. Nogomet, košarka, MMA, F1 — ne zamudi niti trenutka s svojo ekipo.</p>
+      <div style="margin-top:22px;height:2px;width:36px;background:linear-gradient(90deg,#39FF14,transparent);"></div>
+    </div>
+
+    <div class="card reveal" style="padding:38px 30px;">
+      <div style="width:54px;height:54px;border-radius:10px;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.18);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:22px;">🍺</div>
+      <h3 class="d-font" style="font-size:30px;color:#fff;margin-bottom:10px;">IZBRANE PIJAČE IN FINGER FOOD</h3>
+      <p style="font-size:0.9rem;color:rgba(214,195,165,0.65);">Točeno in stekleničeno pivo, ročno pripravljeni koktajli in izbrana ponudba žganih pijač. Hladno, hitro in popolno natočeno. Ob pijači pa odlična ponudba pic, toastov, rogljičkov in sladoleda.</p>
+      <div style="margin-top:22px;height:2px;width:36px;background:linear-gradient(90deg,#39FF14,transparent);"></div>
+    </div>
+
+    <div class="card reveal" style="padding:38px 30px;">
+      <div style="width:54px;height:54px;border-radius:10px;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.18);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:22px;">🎯</div>
+      <h3 class="d-font" style="font-size:30px;color:#fff;margin-bottom:10px;">IGRE</h3>
+      <p style="font-size:0.9rem;color:rgba(214,195,165,0.65);">Zabava se ne konča na zaslonu. Preizkusite se v pikadu ali odbojki in tekmovanje prenesite tudi izven igrišča.</p>
+      <div style="margin-top:22px;height:2px;width:36px;background:linear-gradient(90deg,#39FF14,transparent);"></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ════════════════════════════ EVENTS (Live · Google Sheets) ══════════ -->
+<section id="events" style="padding:100px 28px;">
+  <div style="max-width:1280px;margin:0 auto;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <span class="section-label" style="margin-bottom:12px;display:block;">Kaj se dogaja</span>
+      <h2 class="d-font" style="font-size:clamp(38px,5vw,68px);color:#fff;margin-bottom:14px;">PRIHAJAJOČI DOGODKI</h2>
+      <p style="font-size:0.92rem;color:rgba(214,195,165,0.58);max-width:420px;margin:0 auto;">Od ogleda tekem do kviz večerov — pri MAC-u se vedno nekaj dogaja.</p>
+    </div>
+
+    <!-- Loading skeletons -->
+    <div id="events-loading" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:22px;">
+      <div style="height:185px;border-radius:8px;background:rgba(90,62,43,0.08);border:1px solid rgba(90,62,43,0.14);animation:ev-shimmer 1.6s ease-in-out infinite;"></div>
+      <div style="height:185px;border-radius:8px;background:rgba(90,62,43,0.08);border:1px solid rgba(90,62,43,0.14);animation:ev-shimmer 1.6s ease-in-out infinite 0.28s;"></div>
+      <div style="height:185px;border-radius:8px;background:rgba(90,62,43,0.08);border:1px solid rgba(90,62,43,0.14);animation:ev-shimmer 1.6s ease-in-out infinite 0.56s;"></div>
+    </div>
+
+    <!-- Populated by JS -->
+    <div id="events-grid" style="display:none;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:22px;"></div>
+
+    <!-- Empty / error state -->
+    <div id="events-empty" style="display:none;text-align:center;padding:48px 0;">
+      <div style="font-size:44px;margin-bottom:14px;">📅</div>
+      <p style="font-size:1rem;color:rgba(214,195,165,0.45);">Trenutno ni prihodnih dogodkov.<br>Poglej kmalu spet!</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+
+<!-- ════════════════════════════ MENU ════════════════════════════ -->
+<section id="menu" style="padding:100px 28px;">
+  <div style="max-width:1280px;margin:0 auto;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <span class="section-label" style="margin-bottom:12px;display:block;">Hrana &amp; Pijača</span>
+      <h2 class="d-font" style="font-size:clamp(38px,5vw,68px);color:#fff;margin-bottom:14px;">NAŠ MENI</h2>
+      <p style="font-size:0.92rem;color:rgba(214,195,165,0.58);max-width:420px;margin:0 auto;">Od hitrih prigrizkov do polnih obrokov — kombiniraj s točenim ali stekleničenim pivom.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:44px;flex-wrap:wrap;">
+      <button onclick="filterMenu('bites')"     id="tab-bites"     class="menu-tab" style="padding:7px 20px;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(57,255,20,0.38);background:rgba(57,255,20,0.1);color:#39FF14;transition:all 0.2s ease;">Prigrizki</button>
+      <button onclick="filterMenu('drinks')"    id="tab-drinks"    class="menu-tab" style="padding:7px 20px;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(90,62,43,0.28);background:transparent;color:rgba(214,195,165,0.55);transition:all 0.2s ease;">Pivo</button>
+      <button onclick="filterMenu('cocktails')" id="tab-cocktails" class="menu-tab" style="padding:7px 20px;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(90,62,43,0.28);background:transparent;color:rgba(214,195,165,0.55);transition:all 0.2s ease;">Koktajli</button>
+      <button onclick="filterMenu('mains')"     id="tab-mains"     class="menu-tab" style="padding:7px 20px;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(90,62,43,0.28);background:transparent;color:rgba(214,195,165,0.55);transition:all 0.2s ease;">Glavne jedi</button>
+    </div>
+
+    <div id="menu-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:18px;">
+
+      <!-- BITES -->
+      <div class="menu-item menu-card" data-cat="bites">
+        <div style="height:175px;background:linear-gradient(135deg,#5A3E2B,#3D2A1B);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">🍗</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Priljubljen</div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Buffalo Wings</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€9</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">12 hrustljavih krilc z omako po izbiri. Blue cheese dip vključen.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="bites">
+        <div style="height:175px;background:linear-gradient(135deg,#4A3222,#2E1E10);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">🌮</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Loaded Nachos</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€8</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Sir, jalapeños, guacamole, kisla smetana. Deljenje ni obvezno.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="bites">
+        <div style="height:175px;background:linear-gradient(135deg,#3D2A1B,#271810);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">🍔</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">MAC Sliders</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€11</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">3 mini goveja burgerja z dimljenim čedarjem in MAC tajno omako.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="bites">
+        <div style="height:175px;background:linear-gradient(135deg,#5A3E2B,#3D2A1B);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">🍟</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Truffle Fries</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€7</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Ročno rezan krompirček s tartufovim oljem in koščki parmezana.</p>
+        </div>
+      </div>
+
+      <!-- DRINKS (hidden by default) -->
+      <div class="menu-item menu-card" data-cat="drinks" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#1A3A1A,#0D2010);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;filter:drop-shadow(0 0 20px rgba(57,255,20,0.3));">🍺</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Točeno</div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Laško Zlatorog</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€3.5</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Najboljši slovenski lager. Svež, zlat, osvežujoč. 5,0% alk.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="drinks" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#1A1A2A,#0D0D1A);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🍻</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Craft</div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Guinness Draught</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€4.5</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Kultovsko irsko temno pivo. Žametno gladko s popolno kremasto peno.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="drinks" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#2A1A3A,#1A0D25);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🍺</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Lokalna IPA izbira</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€5</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Izmenjajoča craft IPA iz slovenskih pivovarn. Vprašaj natakarja.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="drinks" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#3A2A0D,#251B08);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🍺</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Uvoz</div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Estrella Damm</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€4</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Vrhunski španski lager. Lahek, svež, popoln za dan tekem. 5,4% alk.</p>
+        </div>
+      </div>
+
+      <!-- COCKTAILS (hidden by default) -->
+      <div class="menu-item menu-card" data-cat="cocktails" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#3A1A1A,#25100D);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🍹</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Posebnost</div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">MAC Mule</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€9</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Vodka, ingirovo pivo, svež limeta, meta. Naš dotik klasike.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="cocktails" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#1A2A1A,#0D1A0D);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🍸</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Green Champion</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€10</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Gin, midori, jabolčni sok, limeta. Zelen kot naše neonske luči.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="cocktails" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#2A1A3A,#180D25);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🥃</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Smoked Old Fashioned</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€11</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Bourbon, dimljeni javorjev sirup, pomarančni bitters. Počasi popit.</p>
+        </div>
+      </div>
+
+      <!-- MAINS (hidden by default) -->
+      <div class="menu-item menu-card" data-cat="mains" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#5A3E2B,#3D2A1B);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🍔</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Bestseller</div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">The MAC Burger</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€14</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">200g prvovrstna govedina, slanina, dimljeni čedar, karamelizirana čebula, brioche žemljica.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="mains" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#2A3A1A,#1A250D);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🍕</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">Krožnik za tekmo</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€22</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Krilca, sliderji, nachosi, krompirček. Za ekipo 3–4.</p>
+        </div>
+      </div>
+
+      <div class="menu-item menu-card" data-cat="mains" style="display:none;">
+        <div style="height:175px;background:linear-gradient(135deg,#3A2A1A,#25190D);position:relative;display:flex;align-items:center;justify-content:center;">
+          <div style="font-size:60px;">🌭</div>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
+        </div>
+        <div style="padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:1rem;font-weight:600;color:#fff;">BBQ Ribs Half Rack</span>
+            <span class="d-font" style="font-size:22px;color:#39FF14;">€18</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Počasi pečena svinjska rebra, MAC BBQ glazura, coleslaw, krompirček ob strani.</p>
+        </div>
+      </div>
+
+    </div><!-- /menu-grid -->
+  </div>
+</section>
+
+
+<div class="sep"></div>
+
+
+<!-- ════════════════════════════ LOCATION ════════════════════════ -->
+<section id="lokacija" style="padding:100px 28px;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(90,62,43,0.22) 0%,transparent 55%),radial-gradient(ellipse at 20% 50%,rgba(57,255,20,0.04) 0%,transparent 50%);"></div>
+
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:2;">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
+      <span class="section-label" style="margin-bottom:12px;display:block;">Kje smo</span>
+      <h2 class="d-font" style="font-size:clamp(38px,5vw,68px);color:#fff;margin-bottom:14px;">NAJDI NAS</h2>
+      <p style="font-size:0.92rem;color:rgba(214,195,165,0.6);">Nahajamo se v Ljubljana - Polje, z enostavnim dostopom in parkiriščem pred lokalom.</p>
+    </div>
+
+    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:stretch;">
+
+      <!-- Map embed -->
+      <div style="border-radius:14px;overflow:hidden;border:1px solid rgba(90,62,43,0.35);box-shadow:0 20px 60px rgba(0,0,0,0.45);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2764.0!2d14.5932!3d46.0509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47652d3b3b3b3b3b%3A0x0!2sKa%C5%A1eljska+cesta+66%2C+1260+Ljubljana!5e0!3m2!1ssl!2ssi!4v1700000000000!5m2!1ssl!2ssi"
+          width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="MAC Športni Bar lokacija">
+        </iframe>
+      </div>
+
+      <!-- Info card -->
+      <div style="display:flex;flex-direction:column;gap:20px;justify-content:center;">
+
+        <div style="background:rgba(15,15,15,0.85);border:1px solid rgba(90,62,43,0.28);border-radius:12px;padding:28px 30px;display:flex;align-items:flex-start;gap:18px;">
+          <div style="width:42px;height:42px;min-width:42px;border-radius:9px;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.18);display:flex;align-items:center;justify-content:center;font-size:20px;">📍</div>
+          <div>
+            <div style="font-size:11px;color:#39FF14;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Naslov</div>
+            <div style="font-size:15px;color:#D6C3A5;font-weight:600;line-height:1.5;">Kašeljska cesta 66<br>1260 Ljubljana - Polje</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(15,15,15,0.85);border:1px solid rgba(90,62,43,0.28);border-radius:12px;padding:28px 30px;display:flex;align-items:flex-start;gap:18px;">
+          <div style="width:42px;height:42px;min-width:42px;border-radius:9px;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.18);display:flex;align-items:center;justify-content:center;font-size:20px;">🕐</div>
+          <div>
+            <div style="font-size:11px;color:#39FF14;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Delovni čas</div>
+            <div style="font-size:14px;color:#D6C3A5;line-height:1.8;">Pon – Sob: 7:00 – 23:00<br>Ned: 8:00 – 23:00</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(15,15,15,0.85);border:1px solid rgba(90,62,43,0.28);border-radius:12px;padding:28px 30px;display:flex;align-items:flex-start;gap:18px;">
+          <div style="width:42px;height:42px;min-width:42px;border-radius:9px;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.18);display:flex;align-items:center;justify-content:center;font-size:20px;">📞</div>
+          <div>
+            <div style="font-size:11px;color:#39FF14;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Telefon</div>
+            <a href="tel:041855677" style="font-size:15px;color:#D6C3A5;font-weight:600;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#39FF14'" onmouseout="this.style.color='#D6C3A5'">041 855 677</a>
+          </div>
+        </div>
+
+        <a href="https://maps.google.com/?q=Kašeljska+cesta+66,+1260+Ljubljana" target="_blank" rel="noopener"
+          style="display:block;background:#39FF14;color:#111;text-align:center;font-weight:800;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:15px 24px;border-radius:8px;transition:opacity 0.2s;"
+          onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+          Odpri v Google Maps →
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="sep"></div>
+
+
+<!-- ════════════════════════════ RESERVE ════════════════════════ -->
+<section id="reserve" style="padding:100px 28px;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(57,255,20,0.055) 0%,transparent 55%),radial-gradient(ellipse at 18% 100%,rgba(90,62,43,0.28) 0%,transparent 48%);"></div>
+
+  <div style="max-width:620px;margin:0 auto;position:relative;z-index:2;">
+    <div class="reveal" style="text-align:center;margin-bottom:44px;">
+      <span class="section-label" style="margin-bottom:12px;display:block;">Ne zamudi</span>
+      <h2 class="d-font" style="font-size:clamp(38px,5vw,68px);color:#fff;margin-bottom:14px;">REZERVIRAJ SVOJO<br><span class="neon-text">MIZO</span></h2>
+      <p style="font-size:0.92rem;color:rgba(214,195,165,0.6);">Mize se napolnijo hitro na dan tekem. Zagotovi si svoje mesto zdaj.</p>
+    </div>
+
+    <div class="reveal" style="background:rgba(15,15,15,0.88);border:1px solid rgba(90,62,43,0.28);border-radius:12px;padding:38px;box-shadow:0 28px 80px rgba(0,0,0,0.5),0 0 44px rgba(57,255,20,0.035);">
+      <form onsubmit="handleReservation(event)">
+
+        <div class="reserve-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div>
+            <label style="display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,195,165,0.52);margin-bottom:7px;">Ime</label>
+            <input type="text" name="firstName" class="form-input" placeholder="Tvoje ime" required />
+          </div>
+          <div>
+            <label style="display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,195,165,0.52);margin-bottom:7px;">Priimek</label>
+            <input type="text" name="lastName" class="form-input" placeholder="Tvoj priimek" required />
+          </div>
+        </div>
+
+        <div class="reserve-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div>
+            <label style="display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,195,165,0.52);margin-bottom:7px;">Telefonska številka</label>
+            <input type="tel" name="phone" class="form-input" placeholder="+386 XX XXX XXX" required />
+          </div>
+          <div>
+            <label style="display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,195,165,0.52);margin-bottom:7px;">E-poštni naslov</label>
+            <input type="email" name="email" class="form-input" placeholder="you@example.com" required />
+          </div>
+        </div>
+
+        <div class="reserve-grid-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div>
+            <label style="display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,195,165,0.52);margin-bottom:7px;">Datum</label>
+            <input type="date" name="date" class="form-input" required style="color-scheme:dark;" />
+          </div>
+          <div>
+            <label style="display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,195,165,0.52);margin-bottom:7px;">Ura</label>
+            <input type="time" name="time" class="form-input" required style="color-scheme:dark;" />
+          </div>
+          <div>
+            <label style="display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,195,165,0.52);margin-bottom:7px;">Gosti</label>
+            <select name="guests" class="form-input" required>
+              <option value="">–</option>
+              <option>1 oseba</option>
+              <option>2 osebi</option>
+              <option>3 osebe</option>
+              <option>4 osebe</option>
+              <option>5 oseb</option>
+              <option>6+ oseb</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom:22px;">
+          <label style="display:block;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,195,165,0.52);margin-bottom:7px;">Opombe (neobvezno)</label>
+          <textarea name="notes" class="form-input" placeholder="Posebne želje? Na katero tekmo prihajate?" rows="3" style="resize:none;"></textarea>
+        </div>
+
+        <button id="submit-btn" type="submit" class="btn-primary" style="width:100%;text-align:center;font-size:0.9rem;padding:15px;">Rezerviraj mizo</button>
+        <p style="font-size:0.75rem;color:rgba(214,195,165,0.36);text-align:center;margin-top:14px;">Poslali vam bomo potrditveni e-mail. Morda vas bomo kontaktirali tudi po telefonu.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════ FOOTER ═════════════════════════ -->
+<footer style="background:rgba(9,9,9,0.95);border-top:1px solid rgba(90,62,43,0.26);padding:64px 28px 32px;">
+  <div style="max-width:1280px;margin:0 auto;">
+
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px;">
+
+      <!-- Brand col -->
+      <div>
+        <img src="brand_assets/Transparent_logo_outer_big_1.png" alt="MAC Športni Bar" style="height:60px;width:auto;margin-bottom:18px;filter:drop-shadow(0 0 8px rgba(57,255,20,0.2));" />
+        <p style="font-size:0.87rem;color:rgba(214,195,165,0.55);max-width:240px;line-height:1.75;">Sodobni športni bar s toplo, družabno in energično atmosfero. Živi prenosi. Izbrane pijače. Odlična hrana.</p>
+        <div style="display:flex;gap:10px;margin-top:22px;">
+          <a href="https://www.instagram.com/mac.sportnibar/" target="_blank" rel="noopener" class="social-icon" style="width:38px;height:38px;border-radius:7px;border:1px solid rgba(90,62,43,0.28);display:flex;align-items:center;justify-content:center;color:rgba(214,195,165,0.55);text-decoration:none;transition:all 0.2s ease;" onmouseover="this.style.borderColor='rgba(57,255,20,0.3)';this.style.color='#39FF14';" onmouseout="this.style.borderColor='rgba(90,62,43,0.28)';this.style.color='rgba(214,195,165,0.55)';">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav -->
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(214,195,165,0.36);margin-bottom:18px;">Hitre povezave</div>
+        <div style="display:flex;flex-direction:column;gap:11px;">
+          <a href="#events"   style="color:rgba(214,195,165,0.65);text-decoration:none;font-size:0.88rem;transition:color 0.2s;" onmouseover="this.style.color='#39FF14'" onmouseout="this.style.color='rgba(214,195,165,0.65)'">Dogodki</a>
+          <a href="#menu"     style="color:rgba(214,195,165,0.65);text-decoration:none;font-size:0.88rem;transition:color 0.2s;" onmouseover="this.style.color='#39FF14'" onmouseout="this.style.color='rgba(214,195,165,0.65)'">Meni</a>
+          <a href="#lokacija" style="color:rgba(214,195,165,0.65);text-decoration:none;font-size:0.88rem;transition:color 0.2s;" onmouseover="this.style.color='#39FF14'" onmouseout="this.style.color='rgba(214,195,165,0.65)'">Lokacija</a>
+          <a href="#about"    style="color:rgba(214,195,165,0.65);text-decoration:none;font-size:0.88rem;transition:color 0.2s;" onmouseover="this.style.color='#39FF14'" onmouseout="this.style.color='rgba(214,195,165,0.65)'">O nas</a>
+          <a href="#reserve"  style="color:rgba(214,195,165,0.65);text-decoration:none;font-size:0.88rem;transition:color 0.2s;" onmouseover="this.style.color='#39FF14'" onmouseout="this.style.color='rgba(214,195,165,0.65)'">Rezerviraj</a>
+        </div>
+      </div>
+
+      <!-- Hours -->
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(214,195,165,0.36);margin-bottom:18px;">Delovni čas</div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:0.83rem;">
+          <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:rgba(214,195,165,0.55);">Pon</span><span style="color:#D6C3A5;">7:00 – 23:00</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:rgba(214,195,165,0.55);">Tor</span><span style="color:#D6C3A5;">7:00 – 23:00</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:rgba(214,195,165,0.55);">Sre</span><span style="color:#D6C3A5;">7:00 – 23:00</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:rgba(214,195,165,0.55);">Čet</span><span style="color:#D6C3A5;">7:00 – 23:00</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:rgba(214,195,165,0.55);">Pet</span><span style="color:#D6C3A5;">7:00 – 23:00</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:rgba(214,195,165,0.55);">Sob</span><span style="color:#D6C3A5;">7:00 – 23:00</span></div>
+          <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:rgba(214,195,165,0.55);">Ned</span><span style="color:#D6C3A5;">8:00 – 23:00</span></div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(214,195,165,0.36);margin-bottom:18px;">Kontakt</div>
+        <div style="display:flex;flex-direction:column;gap:11px;font-size:0.85rem;color:rgba(214,195,165,0.62);">
+          <div>📍 Kašeljska cesta 66<br>1260 Ljubljana - Polje</div>
+          <div>📞 <a href="tel:041855677" style="color:rgba(214,195,165,0.62);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#39FF14'" onmouseout="this.style.color='rgba(214,195,165,0.62)'">041 855 677</a></div>
+          <a href="https://www.instagram.com/mac.sportnibar/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:rgba(214,195,165,0.62);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#39FF14'" onmouseout="this.style.color='rgba(214,195,165,0.62)'">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @mac.sportnibar
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="padding-top:28px;border-top:1px solid rgba(90,62,43,0.18);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div style="font-size:0.76rem;color:rgba(214,195,165,0.36);">© 2025 MAC Športni Bar. Vse pravice pridržane.</div>
+      <div style="font-size:0.76rem;color:rgba(214,195,165,0.36);">Ustvarjeno s strastjo do igre.</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Scroll reveal ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 55);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── Events · Apps Script JSONP (works from file:// with no CORS issues) ──
+  const EVENTS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzU4QVFtrxbLiswd-XNWi5KukjbwMl7w3eX8SVdYZqSyW4jInC8GWJH1XbfsgWuHkSGuQ/exec';
+  const MONS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  function dateBadge(str) {
+    if (!str) return { day: '?', mon: '' };
+    // Handle DD.MM.YYYY (European format from Google Sheets)
+    const dot = str.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+    if (dot) return { day: parseInt(dot[1], 10), mon: MONS[parseInt(dot[2], 10) - 1] };
+    // Handle YYYY-MM-DD (ISO format)
+    const iso = str.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (iso) return { day: parseInt(iso[3], 10), mon: MONS[parseInt(iso[2], 10) - 1] };
+    const d = new Date(str);
+    if (!isNaN(d.getTime())) return { day: d.getUTCDate(), mon: MONS[d.getUTCMonth()] };
+    return { day: str, mon: '' };
+  }
+
+  function buildCard(ev, i) {
+    if (!ev.name || !ev.name.trim()) return '';
+    const { day, mon } = dateBadge(ev.date);
+    const g  = i % 2 === 0;
+    const ac = g ? '#39FF14' : '#D6C3A5';
+    const bg = g ? 'rgba(57,255,20,0.07)'  : 'rgba(90,62,43,0.12)';
+    const bd = g ? 'rgba(57,255,20,0.18)'  : 'rgba(90,62,43,0.28)';
+    const br = g ? 'linear-gradient(90deg,#39FF14,rgba(57,255,20,0.15))' : 'linear-gradient(90deg,#5A3E2B,rgba(90,62,43,0.15))';
+    return `<div class="card card-interactive" style="padding:0;overflow:hidden;">
+      <div style="height:5px;background:${br};"></div>
+      <div style="padding:26px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;">
+          <div style="background:${bg};border:1px solid ${bd};border-radius:7px;padding:10px 14px;text-align:center;min-width:54px;">
+            <div class="d-font" style="font-size:26px;color:${ac};line-height:1.05;">${day}</div>
+            <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:${ac};opacity:0.75;">${mon}</div>
+          </div>
+          ${ev.entry ? `<span style="background:${bg};border:1px solid ${bd};color:${ac};font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;">${ev.entry}</span>` : ''}
+        </div>
+        <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:7px;">${ev.name}</h3>
+        ${ev.desc ? `<p style="font-size:0.86rem;color:rgba(214,195,165,0.62);margin-bottom:${ev.time?'18px':'0'};">${ev.desc}</p>` : ''}
+        ${ev.time ? `<div style="font-size:0.78rem;color:rgba(214,195,165,0.44);display:flex;align-items:center;gap:6px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ${ev.time}</div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  function loadEvents() {
+    const loading = document.getElementById('events-loading');
+    const grid    = document.getElementById('events-grid');
+    const empty   = document.getElementById('events-empty');
+
+    if (EVENTS_SCRIPT_URL === 'YOUR_EVENTS_SCRIPT_URL_HERE') {
+      loading.style.display = 'none';
+      empty.innerHTML = '<div style="font-size:44px;margin-bottom:14px;">⚙️</div><p style="font-size:1rem;color:rgba(214,195,165,0.45);">Events script URL not configured yet.</p>';
+      empty.style.display = 'block';
+      return;
+    }
+
+    // Global-variable approach: script sets window.macEvents then calls window.macEventsReady()
+    // This avoids CORS/redirect issues that strip the ?callback= parameter from file:// origins
+    const timer = setTimeout(() => {
+      loading.style.display = 'none';
+      empty.innerHTML = '<div style="font-size:44px;margin-bottom:14px;">⚠️</div><p style="font-size:1rem;color:rgba(214,195,165,0.45);">Could not load events. Please try again later.</p>';
+      empty.style.display = 'block';
+    }, 10000);
+
+    window.macEventsReady = function() {
+      clearTimeout(timer);
+      delete window.macEventsReady;
+      const events = window.macEvents || [];
+      loading.style.display = 'none';
+      if (!events.length) { empty.style.display = 'block'; return; }
+      const html = events.map(buildCard).join('');
+      if (!html.trim()) { empty.style.display = 'block'; return; }
+      grid.innerHTML = html;
+      grid.style.display = 'grid';
+    };
+
+    const s = document.createElement('script');
+    s.src = EVENTS_SCRIPT_URL;
+    s.onerror = () => {
+      clearTimeout(timer);
+      loading.style.display = 'none';
+      empty.innerHTML = '<div style="font-size:44px;margin-bottom:14px;">⚠️</div><p style="font-size:1rem;color:rgba(214,195,165,0.45);">Could not load events. Please try again later.</p>';
+      empty.style.display = 'block';
+    };
+    document.head.appendChild(s);
+  }
+  loadEvents();
+
+  // ── Nav opacity on scroll ──
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(9,9,9,0.96)'
+      : 'rgba(17,17,17,0.82)';
+  }, { passive: true });
+
+  // ── Menu filter ──
+  function filterMenu(cat) {
+    document.querySelectorAll('.menu-card').forEach(c => {
+      c.style.display = c.dataset.cat === cat ? 'block' : 'none';
+    });
+    document.querySelectorAll('.menu-tab').forEach(t => {
+      const active = t.id === `tab-${cat}`;
+      t.style.background     = active ? 'rgba(57,255,20,0.1)'   : 'transparent';
+      t.style.borderColor    = active ? 'rgba(57,255,20,0.38)'  : 'rgba(90,62,43,0.28)';
+      t.style.color          = active ? '#39FF14'               : 'rgba(214,195,165,0.55)';
+    });
+  }
+
+  // ── Reservation form ──
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDQkwqNDDZqX6OpVdlhQ2J0DuOCPtbea5jC4zOTM_KgO_Fs84rLGhFPFE9Y58jw8H8mg/exec';
+
+  function handleReservation(e) {
+    e.preventDefault();
+    const btn  = document.getElementById('submit-btn');
+    const form = e.target;
+    const fd   = new FormData(form);
+
+    const params = new URLSearchParams({
+      firstName : fd.get('firstName'),
+      lastName  : fd.get('lastName'),
+      phone     : fd.get('phone'),
+      email     : fd.get('email'),
+      date      : fd.get('date'),
+      time      : fd.get('time'),
+      guests    : fd.get('guests'),
+      notes     : fd.get('notes') || ''
+    });
+
+    // Send to Apps Script (fire-and-forget, no-cors avoids redirect issues)
+    if (SCRIPT_URL !== 'YOUR_APPS_SCRIPT_URL_HERE') {
+      fetch(`${SCRIPT_URL}?${params}`, { method: 'GET', mode: 'no-cors' }).catch(() => {});
+    }
+
+    // Demo animation — plays immediately without waiting for network
+    btn.textContent = 'Rezervacija poslana ✓';
+    btn.style.cssText += 'background:rgba(57,255,20,0.2);color:#39FF14;border:1px solid rgba(57,255,20,0.35);cursor:default;';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Rezerviraj mizo';
+      btn.style.cssText = '';
+      btn.disabled = false;
+      form.reset();
+    }, 3500);
+  }
+</script>
+</body>
+</html>
