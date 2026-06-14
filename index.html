@@ -324,7 +324,7 @@
           <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(214,195,165,0.52);">HD Projektor</div>
         </div>
         <div>
-          <div class="d-font" style="font-size:22px;color:#39FF14;line-height:1.1;">TAP &amp;<br>BOTTLE</div>
+          <div class="d-font" style="font-size:28px;color:#39FF14;line-height:1;">TOČENO</div>
           <div style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(214,195,165,0.52);">Pivo</div>
         </div>
         <div>
@@ -421,15 +421,8 @@
       <p style="font-size:0.92rem;color:rgba(214,195,165,0.58);max-width:480px;margin:0 auto;">Vsak dan sveže akcije — od jutranje kave do večernega piva s pico. Pridi zgodaj, pridi lačen.</p>
     </div>
 
-    <!-- Tabs -->
-    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:44px;flex-wrap:wrap;">
-      <button onclick="filterMenu('bites')"     id="tab-bites"     class="menu-tab" style="padding:7px 20px;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(57,255,20,0.38);background:rgba(57,255,20,0.1);color:#39FF14;transition:all 0.2s ease;">Prigrizki</button>
-      <button onclick="filterMenu('drinks')"    id="tab-drinks"    class="menu-tab" style="padding:7px 20px;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(90,62,43,0.28);background:transparent;color:rgba(214,195,165,0.55);transition:all 0.2s ease;">Pivo</button>
-      <button onclick="filterMenu('cocktails')" id="tab-cocktails" class="menu-tab" style="padding:7px 20px;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(90,62,43,0.28);background:transparent;color:rgba(214,195,165,0.55);transition:all 0.2s ease;">Koktajli</button>
-      <button onclick="filterMenu('mains')"     id="tab-mains"     class="menu-tab" style="padding:7px 20px;border-radius:100px;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border:1px solid rgba(90,62,43,0.28);background:transparent;color:rgba(214,195,165,0.55);transition:all 0.2s ease;">Glavne jedi</button>
-    </div>
 
-    <div id="menu-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:18px;">
+    <div id="menu-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,320px));gap:18px;justify-content:center;">
 
       <!-- BITES -->
       <div class="menu-item menu-card" data-cat="bites">
@@ -474,168 +467,6 @@
             <span class="d-font" style="font-size:22px;color:#39FF14;">11€</span>
           </div>
           <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Ena velika pica po izbiri in hladno točeno pivo — popolna kombinacija za vsak prenos.</p>
-        </div>
-      </div>
-
-      <div class="menu-item menu-card" data-cat="bites">
-        <div style="height:175px;background:linear-gradient(135deg,#5A3E2B,#3D2A1B);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;filter:drop-shadow(0 4px 14px rgba(0,0,0,0.5));">🍟</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Truffle Fries</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€7</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Ročno rezan krompirček s tartufovim oljem in koščki parmezana.</p>
-        </div>
-      </div>
-
-      <!-- DRINKS (hidden by default) -->
-      <div class="menu-item menu-card" data-cat="drinks" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#1A3A1A,#0D2010);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;filter:drop-shadow(0 0 20px rgba(57,255,20,0.3));">🍺</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Točeno</div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Laško Zlatorog</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€3.5</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Najboljši slovenski lager. Svež, zlat, osvežujoč. 5,0% alk.</p>
-        </div>
-      </div>
-
-      <div class="menu-item menu-card" data-cat="drinks" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#1A1A2A,#0D0D1A);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🍻</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Craft</div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Guinness Draught</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€4.5</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Kultovsko irsko temno pivo. Žametno gladko s popolno kremasto peno.</p>
-        </div>
-      </div>
-
-      <div class="menu-item menu-card" data-cat="drinks" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#2A1A3A,#1A0D25);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🍺</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Lokalna IPA izbira</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€5</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Izmenjajoča craft IPA iz slovenskih pivovarn. Vprašaj natakarja.</p>
-        </div>
-      </div>
-
-      <div class="menu-item menu-card" data-cat="drinks" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#3A2A0D,#251B08);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🍺</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Uvoz</div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Estrella Damm</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€4</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Vrhunski španski lager. Lahek, svež, popoln za dan tekem. 5,4% alk.</p>
-        </div>
-      </div>
-
-      <!-- COCKTAILS (hidden by default) -->
-      <div class="menu-item menu-card" data-cat="cocktails" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#3A1A1A,#25100D);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🍹</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Posebnost</div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">MAC Mule</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€9</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Vodka, ingirovo pivo, svež limeta, meta. Naš dotik klasike.</p>
-        </div>
-      </div>
-
-      <div class="menu-item menu-card" data-cat="cocktails" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#1A2A1A,#0D1A0D);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🍸</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Green Champion</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€10</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Gin, midori, jabolčni sok, limeta. Zelen kot naše neonske luči.</p>
-        </div>
-      </div>
-
-      <div class="menu-item menu-card" data-cat="cocktails" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#2A1A3A,#180D25);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🥃</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Smoked Old Fashioned</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€11</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Bourbon, dimljeni javorjev sirup, pomarančni bitters. Počasi popit.</p>
-        </div>
-      </div>
-
-      <!-- MAINS (hidden by default) -->
-      <div class="menu-item menu-card" data-cat="mains" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#5A3E2B,#3D2A1B);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🍔</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-          <div style="position:absolute;top:12px;right:12px;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.28);color:#39FF14;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;">Bestseller</div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">The MAC Burger</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€14</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">200g prvovrstna govedina, slanina, dimljeni čedar, karamelizirana čebula, brioche žemljica.</p>
-        </div>
-      </div>
-
-      <div class="menu-item menu-card" data-cat="mains" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#2A3A1A,#1A250D);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🍕</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">Krožnik za tekmo</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€22</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Krilca, sliderji, nachosi, krompirček. Za ekipo 3–4.</p>
-        </div>
-      </div>
-
-      <div class="menu-item menu-card" data-cat="mains" style="display:none;">
-        <div style="height:175px;background:linear-gradient(135deg,#3A2A1A,#25190D);position:relative;display:flex;align-items:center;justify-content:center;">
-          <div style="font-size:60px;">🌭</div>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,0.8) 0%,transparent 55%);"></div>
-        </div>
-        <div style="padding:18px 20px;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
-            <span style="font-size:1rem;font-weight:600;color:#fff;">BBQ Ribs Half Rack</span>
-            <span class="d-font" style="font-size:22px;color:#39FF14;">€18</span>
-          </div>
-          <p style="font-size:0.82rem;color:rgba(214,195,165,0.6);">Počasi pečena svinjska rebra, MAC BBQ glazura, coleslaw, krompirček ob strani.</p>
         </div>
       </div>
 
